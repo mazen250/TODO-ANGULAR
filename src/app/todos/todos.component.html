@@ -1,11 +1,16 @@
-<h1>add new todo</h1>
-<input type="text" placeholder="enter your task here" />
-<button>add</button>
+<div class="addCard">
+  <h1 class="header">add new todo</h1>
+  <input type="text" placeholder="enter your task here" #newTodo />
+  <button (click)="addTodo(newTodo)">add</button>
+</div>
+
 <div class="todos" *ngFor="let todo of todos">
-  <h1>{{ todo.desc }}</h1>
-  <button>X</button>
-  <button>details</button>
-  <input type="text" placeholder="update todo here" />
-  <button>update</button>
-  <hr />
+  <!-- <p>id : {{ todo._id }}</p> -->
+  <h1>Task : {{ todo.desc }}</h1>
+  <div class="options">
+    <button>details</button>
+    <input type="text" placeholder="update todo here" #newText />
+    <button (click)="updateTodo(todo._id, newText)">update</button>
+    <button (click)="deleteTodo(todo._id)">X</button>
+  </div>
 </div>
