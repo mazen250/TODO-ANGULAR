@@ -23,7 +23,7 @@ export class TodosComponent implements OnInit {
 
   getTodo() {
     this.httpClient
-      .get<any>('http://localhost:5001/todos')
+      .get<any>('http://mazen-back-tools-project.apps.eu45.prod.nextcle.com/todos')
       .subscribe((todos) => {
         this.todos = todos;
       });
@@ -34,7 +34,7 @@ export class TodosComponent implements OnInit {
       return;
     } else {
       this.httpClient
-        .post<any>('http://localhost:5001/addTodo', {
+        .post<any>('http://mazen-back-tools-project.apps.eu45.prod.nextcle.com/addTodo', {
           desc: todo.value,
         })
         .subscribe(() => {});
@@ -42,7 +42,7 @@ export class TodosComponent implements OnInit {
   }
   updateTodo(id: Number, newText: HTMLInputElement) {
     this.httpClient
-      .put<any>(`http://localhost:5001/updateTodo/${id}`, {
+      .put<any>(`http://mazen-back-tools-project.apps.eu45.prod.nextcle.com/updateTodo/${id}`, {
         newText: newText.value,
         id: id,
       })
@@ -52,7 +52,7 @@ export class TodosComponent implements OnInit {
   }
   deleteTodo(id: number) {
     this.httpClient
-      .delete<any>(`http://localhost:5001/deleteTodo/${id}`)
+      .delete<any>(`http://mazen-back-tools-project.apps.eu45.prod.nextcle.com/deleteTodo/${id}`)
       .subscribe((todo) => {
         this.getTodo();
       });
